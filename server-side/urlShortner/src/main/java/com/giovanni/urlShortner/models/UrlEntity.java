@@ -1,4 +1,4 @@
-package models;
+package com.giovanni.urlShortner.models;
 
 import jakarta.persistence.*;
 import lombok.*;

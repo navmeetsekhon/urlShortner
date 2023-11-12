@@ -1,6 +1,6 @@
-package util;
+package com.giovanni.urlShortner.util;
 
-import config.ShortUrlConfig;
+import com.giovanni.urlShortner.config.ShortUrlConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

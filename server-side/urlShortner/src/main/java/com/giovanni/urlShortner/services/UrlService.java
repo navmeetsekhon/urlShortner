@@ -1,13 +1,13 @@
-package services;
+package com.giovanni.urlShortner.services;
 
-import dto.ShortUrlRequest;
-import dto.ShortUrlResponse;
-import models.UrlEntity;
+import com.giovanni.urlShortner.dto.ShortUrlRequest;
+import com.giovanni.urlShortner.dto.ShortUrlResponse;
+import com.giovanni.urlShortner.models.UrlEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.RedirectView;
-import repository.UrlRepository;
-import util.ShortUrlUtil;
+import com.giovanni.urlShortner.repository.UrlRepository;
+import com.giovanni.urlShortner.util.ShortUrlUtil;
 
 @Service
 public class UrlService {
@@ -34,7 +34,7 @@ public class UrlService {
     }
     public RedirectView getFullUrl(String key){
         if(key!=null){
-            UrlEntity entity=urlRepository.findByKey(key);
+            UrlEntity entity=urlRepository.findByUrlKey(key);
             entity.setClickCount(entity.getClickCount()+1);
             urlRepository.save(entity);
             return new RedirectView(entity.getOriginalUrl());

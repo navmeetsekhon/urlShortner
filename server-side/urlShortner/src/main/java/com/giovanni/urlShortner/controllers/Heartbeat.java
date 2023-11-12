@@ -1,4 +1,4 @@
-package controllers;
+package com.giovanni.urlShortner.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="/heartbeat")
+@RequestMapping("/heartbeat")
 public class Heartbeat {
-    @GetMapping("/test")
+    @GetMapping
     public ResponseEntity<String> heartbeat(){
         String response="Server is up and running, status : "+HttpStatus.OK.value();
         return new ResponseEntity<>(response, HttpStatus.OK);

@@ -1,4 +1,4 @@
-package dto;
+package com.giovanni.urlShortner.dto;
 
 import lombok.Getter;
 import lombok.Setter;

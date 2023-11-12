@@ -1,4 +1,4 @@
-package config;
+package com.giovanni.urlShortner.config;
 
 import lombok.Getter;
 import lombok.Setter;
