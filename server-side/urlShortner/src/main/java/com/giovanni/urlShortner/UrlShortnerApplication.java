@@ -9,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 public class UrlShortnerApplication {
 
 	public static void main(String[] args) {
-		System.out.println("hello");
 		SpringApplication.run(UrlShortnerApplication.class, args);
 	}
 

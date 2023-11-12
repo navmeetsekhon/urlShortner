@@ -16,7 +16,7 @@ public class UrlController {
     public ShortUrlResponse shortenUrl(@RequestBody ShortUrlRequest request){
         return urlService.shortenUrl(request);
     }
-    @GetMapping("{shotrUrl}")
+    @GetMapping("{shortUrl}")
     public RedirectView getOriginalUrl(@PathVariable String shortUrl){
         return urlService.getFullUrl(shortUrl);
     }
