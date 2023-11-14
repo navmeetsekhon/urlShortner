@@ -1,6 +1,9 @@
 package com.giovanni.urlShortner.controllers;
 
+import com.giovanni.urlShortner.services.QrService;
 import com.giovanni.urlShortner.services.UrlService;
+import com.giovanni.urlShortner.dto.QrRequest;
+import com.giovanni.urlShortner.dto.QrResponse;
 import com.giovanni.urlShortner.dto.ShortUrlRequest;
 import com.giovanni.urlShortner.dto.ShortUrlResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,10 @@ import org.springframework.web.servlet.view.RedirectView;
 public class UrlController {
     @Autowired
     private UrlService urlService;
+
+    @Autowired
+    private QrService qrService;
+
     @PostMapping("/createUrl")
     public ShortUrlResponse shortenUrl(@RequestBody ShortUrlRequest request){
         return urlService.shortenUrl(request);
@@ -21,8 +28,8 @@ public class UrlController {
         return urlService.getFullUrl(shortUrl);
     }
 
-    @GetMapping("/test")
-    public String testApi(){
-        return "Server is up";
+    @PostMapping("/QrGen")
+    public QrResponse generateQr(@RequestBody QrRequest Url){
+        return qrService.generateQr(Url);
     }
 }
