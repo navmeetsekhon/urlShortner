@@ -1,4 +1,4 @@
-package com.giovanni.urlShortner.QrGenerator;
+package com.giovanni.urlShortner.util;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;

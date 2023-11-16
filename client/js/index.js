@@ -26,9 +26,9 @@ async function postUrl(originalUrl) {
 
 async function shortenUrl() {
   var originalUrl = document.getElementById("originalUrl").value;
-  if(!originalUrl){
-    window.alert("enter valid url.")
-    return
+  if (!originalUrl) {
+    window.alert("enter valid url.");
+    return;
   }
   try {
     const key = await postUrl(originalUrl);
@@ -68,19 +68,38 @@ async function QrCreate(originalUrl) {
 }
 async function generateQr() {
   var originalUrl = document.getElementById("originalUrl").value;
-  if(!originalUrl){
-    window.alert("enter valid url.")
-    return
+  if (!originalUrl) {
+    window.alert("enter valid url.");
+    return;
   }
   try {
     var pathQr = await QrCreate(originalUrl);
     console.log("Qr path:", pathQr);
-    pathQr="/urlShortner/"+pathQr
+    pathQr = "/urlShortner/" + pathQr;
     document.getElementById("shortenedUrl").innerHTML =
-    "<strong>QR: </strong><img src='../" + pathQr + "' alt='Qr code' width='100' height='100'>";
-    // "<strong>QR: </strong><p>'"+pathQr+"'</p>";
-      } catch (error) {
+      "<img id='qrCode' src='../" +
+      pathQr +
+      "' alt='Qr code' width='100' height='100'><br><button onclick='downloadImage()'>Downlaod Qr</button>";
+  } catch (error) {
     console.error("Error:", error);
     // Handle errors if necessary
   }
+}
+function downloadImage() {
+  var imgElement = document.getElementById("qrCode");
+  var imgUrl = imgElement.src;
+  var imgName = imgUrl.substring(imgUrl.lastIndexOf("/") + 1);
+
+  // var link = document.createElement('a');
+  // link.href = imgUrl;
+  // link.download = imgName;
+  // link.click();
+  var a = document.createElement('a');
+            a.href = imgUrl;
+            a.download = imgName;
+            a.style.display = 'none';
+            a.target = "_blank";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
 }
