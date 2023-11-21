@@ -4,63 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortener</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        .container {
-            background-color: #fef7f7;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #4caf50;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .shortened-url {
-            margin-top: 20px;
-            word-break: break-all;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>URL Shortener</h1>
-        <input type="text" id="originalUrl" placeholder="Enter your URL">
-        <button onclick="shortenUrl()">Shorten</button>
-        <button onclick="generateQr()">QR</button>
+        <h1 class="title">URL Shortener</h1>
+        <input class="inputUrl" type="text" id="originalUrl" placeholder="Enter your URL">
+        <button class="UrlShortner" onclick="shortenUrl()">Shorten</button>
+        <button class="QrGenerator" onclick="generateQr()">QR</button>
         <div class="shortened-url" id="shortenedUrl"></div>
     </div>
     <script src="js/index.js"></script>

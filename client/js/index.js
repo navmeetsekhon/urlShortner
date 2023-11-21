@@ -77,23 +77,17 @@ async function generateQr() {
     console.log("Qr path:", pathQr);
     pathQr = "/urlShortner/" + pathQr;
     document.getElementById("shortenedUrl").innerHTML =
-      "<img id='qrCode' src='../" +
+      "<img id='qrCode' src='.." +
       pathQr +
-      "' alt='Qr code' width='100' height='100'><br><button onclick='downloadImage()'>Downlaod Qr</button>";
+      "' alt='Qr code' width='100' height='100'><br><button class='qrDownload' onclick='downloadImage()'>Download Qr Code</button>";
   } catch (error) {
     console.error("Error:", error);
-    // Handle errors if necessary
   }
 }
 function downloadImage() {
   var imgElement = document.getElementById("qrCode");
   var imgUrl = imgElement.src;
   var imgName = imgUrl.substring(imgUrl.lastIndexOf("/") + 1);
-
-  // var link = document.createElement('a');
-  // link.href = imgUrl;
-  // link.download = imgName;
-  // link.click();
   var a = document.createElement('a');
             a.href = imgUrl;
             a.download = imgName;
