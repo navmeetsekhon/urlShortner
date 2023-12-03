@@ -18,7 +18,7 @@ public class UrlEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="orginalUrl",unique = true,nullable = false)
+    @Column(name="originalUrl",unique = true,nullable = false)
     private String originalUrl;
 
     @Column(name="urlKey",unique = true,nullable = false,columnDefinition = "TEXT")

@@ -8,7 +8,6 @@ body {
     justify-content: center;
     height: 70vh;
 }
-
 .container {
     background-color: #fdfdfd;
     padding: 20px;
@@ -41,37 +40,4 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 4px;
-}
-.container .QrGenerator {
-    width: 80px; 
-    height: 40px;
-    background-color: #2102ae;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.container .UrlShortner:hover {
-    background-color: #0d0046;
-}
-.container .QrGenerator:hover {
-    background-color: #0d0046;
-}
-
-.shortened-url {
-    margin-top: 20px;
-    word-break: break-all;
-}
-.container .qrDownload{
-    background-color: #2102ae;
-    font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-.container .qrDownload:hover {
-    background-color: #0d0046;
 }
