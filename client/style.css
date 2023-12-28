@@ -75,3 +75,7 @@ body {
 .container .qrDownload:hover {
     background-color: #0d0046;
 }
+.container .shortened-url .qrOutput{
+    height: 100px;
+    width:  100px;
+}

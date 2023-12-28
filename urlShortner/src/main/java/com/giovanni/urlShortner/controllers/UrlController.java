@@ -6,7 +6,11 @@ import com.giovanni.urlShortner.dto.QrRequest;
 import com.giovanni.urlShortner.dto.QrResponse;
 import com.giovanni.urlShortner.dto.ShortUrlRequest;
 import com.giovanni.urlShortner.dto.ShortUrlResponse;
+
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -29,7 +33,7 @@ public class UrlController {
     }
 
     @PostMapping("/QrGen")
-    public QrResponse generateQr(@RequestBody QrRequest Url){
+    public ResponseEntity<byte[]> generateQr(@RequestBody QrRequest Url) throws IOException{
         return qrService.generateQr(Url);
     }
 }

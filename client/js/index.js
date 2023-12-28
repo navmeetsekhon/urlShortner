@@ -26,6 +26,7 @@ async function postUrl(originalUrl) {
 
 async function shortenUrl() {
   var originalUrl = document.getElementById("originalUrl").value;
+  console.log(originalUrl);
   if (!originalUrl) {
     window.alert("enter valid url.");
     return;
@@ -59,8 +60,11 @@ async function QrCreate(originalUrl) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const responseData = await response.json();
-    return responseData.path; // Assuming the server returns the short URL key
+    const responseData = await response.blob();
+    const imageObjectURL = URL.createObjectURL(responseData);
+    console.log("blob path:"+imageObjectURL);
+    return imageObjectURL;
+    // return responseData.path; // Assuming the server returns the short URL key
   } catch (error) {
     console.error("Error:", error);
     throw error; // Rethrow the error to be caught by the calling function
@@ -74,13 +78,15 @@ async function generateQr() {
   }
   try {
     var pathQr = await QrCreate(originalUrl);
-    console.log("Qr path:", pathQr);
-    pathQr = "/urlShortner/" + pathQr;
-    document.getElementById("shortenedUrl").innerHTML =
-      "<img id='qrCode' src='.." +
-      pathQr +
-      "' alt='Qr code' width='100' height='100'><br><button class='qrDownload' onclick='downloadImage()'>Download Qr Code</button>";
-  } catch (error) {
+    const container = document.getElementById("shortenedUrl");
+    const qr = document.createElement("img");
+    qr.src = pathQr;
+    qr.className="qrOutput";
+    qr.alt='QR code';
+    qr.style
+    container.innerHTML="";
+    container.appendChild(qr);
+   } catch (error) {
     console.error("Error:", error);
   }
 }
