@@ -11,7 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import com.giovanni.urlShortner.dto.QrRequest;
-import com.giovanni.urlShortner.dto.QrResponse;
+// import com.giovanni.urlShortner.dto.QrResponse;
 import com.giovanni.urlShortner.util.QrCodeGenerator;
 
 @Service

@@ -30,8 +30,7 @@ public class QrCodeGenerator {
 
             File qrCodeFile = new File(filePath);
             ImageIO.write(bufferedImage, fileType, qrCodeFile);
-
-            System.out.println("QR Code generated successfully at: " + filePath);
+            // System.out.println("QR Code generated successfully at: " + filePath);
         } catch (Exception e) {
             e.printStackTrace();
         }
