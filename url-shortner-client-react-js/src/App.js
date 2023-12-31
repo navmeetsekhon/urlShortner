@@ -3,14 +3,14 @@ import "./App.css";
 import React, { useState } from "react";
 import UrlForm from "./components/UrlForm";
 import UrlResult from "./components/UrlResult";
-// import QrForm from "./components/QrForm";
-// import QrResult from "./components/QrResult";
+import QrForm from "./components/QrForm";
+import QrResult from "./components/QrResult";
 const prefix="http://localhost:8080/v1/"
 function App() {
   const [UrlData, setUrl] = useState({ longUrl: "", ShortKey: "" });
   const [ShowUrl, SetShowUrl] = useState(false);
-  // const [QrPath,SetQrPath]=useState({path:""});
-  // const [ShowQr, SetShowQr] = useState(false);
+  const [QrPath,SetQrPath]=useState({path:""});
+  const [ShowQr, SetShowQr] = useState(false);
 
 
   const handleUrl = (NewUrlData) => {
@@ -18,22 +18,23 @@ function App() {
     SetShowUrl(true);
   }
 
-  // const handleQr=(QrPath)=>{
-  //   console.log(QrPath);
-  //   SetQrPath(QrPath);
-  //   SetShowQr(true);
-  // }
+  const handleQr=(QrPath)=>{
+    console.log("app.js"+QrPath);
+    SetQrPath(QrPath);
+    SetShowQr(true);
+  }
 
   return (
+
     <div>
       <UrlForm onUrlShortened={handleUrl} />
       {ShowUrl && (
         <UrlResult longUrl={UrlData.longUrl} ShortKey={UrlData.ShortKey} prefix={prefix} />
       )}
-      {/* <QrForm OnQrGenerated={handleQr} />
+      <QrForm OnQrGenerated={handleQr} />
       {ShowQr && (
-        <QrResult path={QrPath.path} />
-      )} */}
+        <QrResult path={QrPath} />
+      )}
     </div>
   );
 }

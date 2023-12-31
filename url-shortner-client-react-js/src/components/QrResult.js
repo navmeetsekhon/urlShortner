@@ -1,19 +1,16 @@
 import React from 'react'
 // import QrCode from '/home/navmeet/Desktop/computer programs/projects/url-shortner/urlShortner/src/main/resources/static/QrCodes'
-const QrResult=function QrResult({path}){
-
-    const source="../urlShortner/"+path;
-    console.log(source);
+const QrResult=function QrResult(path){
+  console.log(typeof(path));
+  console.log(path.path);
     return(
         <>
         <div className="outputContainer">
         {path? (
           <div>
             {/* <p>Original url:<a className="original" href={longUrl}>{longUrl}</a></p> */}
-            <div>
-                Qr:<img className="qrCode" src={source} alt='Qr code' width='200' height='200'></img>
+                Qr:<img className="qrCode" src={path.path} alt='Qr code' width='100' height='100'></img>
                 {/* <button className='qrDownload' onclick='downloadImage()'>Download Qr Code</button> */}
-            </div>
           </div>
         ) : null}
       </div>
