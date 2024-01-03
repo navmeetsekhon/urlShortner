@@ -1,4 +1,5 @@
 package com.giovanni.urlShortner.services;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
@@ -31,9 +32,11 @@ public class QrService {
             e.printStackTrace();
         }
         // QrResponse response=QrResponse.builder().path(filePath).build();
-        
-        Resource resource = new ClassPathResource("static/QrCodes/qrCode.png");
-        byte[] imageByte = Files.readAllBytes(resource.getFile().toPath());
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(imageByte);
+
+        File imageFile = new File(filePath);
+        byte[] imageByte = Files.readAllBytes(imageFile.toPath());
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_PNG)
+                .body(imageByte);
     }
 }
