@@ -1,50 +1,95 @@
-# Url-shortner-springboot
+# URL Shortener and QR Code Generator
 
-[![Build Status](https://travis-ci.org/codecentric/springboot-sample-app.svg?branch=master)](https://travis-ci.org/codecentric/springboot-sample-app)
-[![Coverage Status](https://coveralls.io/repos/github/codecentric/springboot-sample-app/badge.svg?branch=master)](https://coveralls.io/github/codecentric/springboot-sample-app?branch=master)
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+Welcome to the URL Shortener and QR Code Generator, a full-stack application built with Vanilla JavaScript for the front end and Spring Boot, MySQL, Maven, and Hibernate JPA for the backend.
 
-Minimal [Spring Boot](http://projects.spring.io/spring-boot/) sample app.
+## Table of Contents
 
-## Requirements
+- [Introduction](#introduction)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+  - [Frontend Setup](#frontend-setup)
+  - [Backend Setup](#backend-setup)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+<!-- - [Database Schema](#database-schema) -->
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-For building and running the application you need:
+## Introduction
 
-- [JDK 17 or above](https://www.oracle.com/java/technologies/downloads/#java17)
-- [Maven 3](https://maven.apache.org)
+URL Shortener and QR Code Generator is a web application that allows users to shorten long URLs and generate QR codes for easy sharing. The application features a simple and intuitive user interface for shortening URLs and retrieving them.
 
-## Running the application locally
+## Features
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `server-side/urlShortner/src/main/java/com/giovanni/urlShortner/UrlShortnerApplication.java` class from your IDE.
+- URL Shortening: Shorten long URLs into compact, shareable links.
+- QR Code Generation: Generate QR codes for shortened URLs and any text.
+- Backend Storage: Store and manage URLs in a MySQL database using Spring Boot and Hibernate JPA.
+- Full Stack: Utilizes Vanilla JavaScript for the frontend and Spring Boot for the backend.
 
-Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
+## Prerequisites
 
-```shell
-mvn spring-boot:run
-```
+Before you begin, ensure you have the following installed:
 
-## Deploying the application to OpenShift
+- Java Development Kit (JDK) 17 or later
+- Apache Maven
+- MySQL Database
+- Node.js and npm (for the frontend)
 
-The easiest way to deploy the sample application to OpenShift is to use the [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html):
+## Getting Started
 
-```shell
-oc new-app codecentric/springboot-maven3-centos~https://github.com/navmeetsekhon/urlShortner.git
-```
+Follow the steps below to set up and run the URL Shortener and QR Code Generator on your local machine.
 
-This will create:
+### Backend Setup
 
-* An ImageStream called "springboot-maven3-centos"
-* An ImageStream called "urlShortner"
-* A BuildConfig called "urlShortner"
-* DeploymentConfig called "urlShortner"
-* Service called "urlShortner"
+1. Clone the repository:
 
-If you want to access the app from outside your OpenShift installation, you have to expose the urlShortner service:
+   ```bash
+   git clone git@github.com:navmeetsekhon/urlShortner.git
 
-```shell
-oc expose urlShortner --hostname=www.example.com
-```
+2. Navigate to the server directory:
 
-## Copyright
+    ```bash
+    cd server
 
-Released under the Apache License 2.0. See the [LICENSE](https://github.com/navmeetsekhon/urlShortner/blob/main/LICENSE) file.
+3. Update the application.properties file with your database connection details:
+
+    ```properties
+    spring.datasource.url=jdbc:mysql://localhost:3306/urlShortnerDb
+    spring.datasource.username=your_username
+    spring.datasource.password=your_password
+    spring.jpa.generate-ddl=true
+    spring.jpa.hibernate.ddl-auto=update
+    short-url.allowed-characters=${ALLOWED_CHARS:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}
+    short-url.key-length=${KEY_LENGTH:6}
+
+4. Run the application:
+
+    ```bash
+    mvn spring-boot:run
+
+The backend will be accessible at http://localhost:8080.
+
+### Front-end Setup
+
+1. Navigate to the client directory:
+
+    ```bash
+    cd client
+
+2. Open `index.html` in any browser.
+
+### Usage
+Visit the frontend application `index.html` to start shortening URLs and generating QR codes. The backend API endpoints are available at http://localhost:8080/api.
+
+### Contributing
+We welcome contributions! If you'd like to contribute to the project, please follow our contribution guidelines.
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+### Acknowledgments
+Thank you to the Spring Boot, Hibernate, and Node.js communities for their excellent tools and documentation.
+Special thanks to contributors and collaborators who have helped improve the project.
+

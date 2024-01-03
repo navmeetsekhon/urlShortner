@@ -19,20 +19,21 @@ public class QrService {
     @Autowired
     QrCodeGenerator qrCodeGenerator;
     public ResponseEntity<byte[]> generateQr(QrRequest req) throws IOException{
+        System.out.println(req);
         String data = req.getUrl();
         String filePath = "src/main/resources/static/QrCodes/qrCode.png";
         String fileType = "png";
         int qrCodeSize = 300;
         try {
             qrCodeGenerator.generateQRCode(data, filePath, fileType, qrCodeSize);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
         // QrResponse response=QrResponse.builder().path(filePath).build();
         
         Resource resource = new ClassPathResource("static/QrCodes/qrCode.png");
         byte[] imageByte = Files.readAllBytes(resource.getFile().toPath());
-
         return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(imageByte);
     }
 }
