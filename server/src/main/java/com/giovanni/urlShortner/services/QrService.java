@@ -6,6 +6,8 @@ import java.nio.file.Files;
 // import org.apache.tomcat.util.file.ConfigurationSource.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.core.io.ClassPathResource;
@@ -20,7 +22,6 @@ public class QrService {
     @Autowired
     QrCodeGenerator qrCodeGenerator;
     public ResponseEntity<byte[]> generateQr(QrRequest req) throws IOException{
-        System.out.println(req);
         String data = req.getUrl();
         String filePath = "src/main/resources/static/QrCodes/qrCode.png";
         String fileType = "png";
@@ -32,11 +33,18 @@ public class QrService {
             e.printStackTrace();
         }
         // QrResponse response=QrResponse.builder().path(filePath).build();
+        try{
+            File imageFile = new File(filePath);
+            byte[] imageByte = Files.readAllBytes(imageFile.toPath());
+            return ResponseEntity.ok()
+                    .contentType(MediaType.IMAGE_PNG)
+                    .body(imageByte);
+        }
+        catch (Exception e){
+            System.err.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 
-        File imageFile = new File(filePath);
-        byte[] imageByte = Files.readAllBytes(imageFile.toPath());
-        return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_PNG)
-                .body(imageByte);
+        }
+
     }
 }
