@@ -30,8 +30,7 @@ public class UrlService {
             List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
 
             if (!documents.isEmpty()) {
-                // If the original URL already exists, return the existing short URL key
-                String existingKey = documents.get(0).getId();
+                String existingKey = documents.getFirst().getId();
                 return ShortUrlResponse.builder().key(existingKey).build();
             }
 

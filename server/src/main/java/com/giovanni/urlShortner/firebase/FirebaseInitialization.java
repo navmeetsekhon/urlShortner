@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Service
 public class FirebaseInitialization {
@@ -14,11 +16,16 @@ public class FirebaseInitialization {
     public void initialization(){
         FileInputStream serviceAccount = null;
         try {
-            serviceAccount =
-                    new FileInputStream("./serviceAccountKey.json");
+//            serviceAccount =
+//                    new FileInputStream("src/main/resources/serviceAccountKey.json");
+            InputStream serviceAccountStream = getClass().getClassLoader().getResourceAsStream("serviceAccountKey.json");
+
+            if (serviceAccountStream == null) {
+                throw new IOException("serviceAccountKey.json not found in the classpath");
+            }
 
             FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccountStream))
                     .build();
 
             FirebaseApp.initializeApp(options);
