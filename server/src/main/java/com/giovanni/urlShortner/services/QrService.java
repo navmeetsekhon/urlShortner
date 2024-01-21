@@ -21,7 +21,7 @@ import com.giovanni.urlShortner.util.QrCodeGenerator;
 public class QrService {
     @Autowired
     QrCodeGenerator qrCodeGenerator;
-    public ResponseEntity<byte[]> generateQr(QrRequest req) throws IOException{
+    public ResponseEntity<byte[]> generateQr(QrRequest req) {
         String data = req.getUrl();
         String filePath = "src/main/resources/static/QrCodes/qrCode.png";
         String fileType = "png";
