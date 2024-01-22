@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.giovanni.urlShortner.UrlShortnerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.301 s - in com.giovanni.urlShortner.UrlShortnerApplicationTests
