@@ -16,8 +16,6 @@ public class FirebaseInitialization {
     public void initialization(){
         FileInputStream serviceAccount = null;
         try {
-//            serviceAccount =
-//                    new FileInputStream("src/main/resources/serviceAccountKey.json");
             InputStream serviceAccountStream = getClass().getClassLoader().getResourceAsStream("serviceAccountKey.json");
 
             if (serviceAccountStream == null) {
@@ -29,13 +27,10 @@ public class FirebaseInitialization {
                     .build();
 
             FirebaseApp.initializeApp(options);
-
         }
         catch (Exception e){
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-
-
     }
 }
