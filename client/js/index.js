@@ -1,7 +1,7 @@
-const prefix = "http://localhost:8080/v1/";
+const prefix = "http://localhost:8080/v1";
 async function postUrl(originalUrl) {
   try {
-    const response = await fetch("http://localhost:8080/v1/createUrl", {
+    const response = await fetch(prefix+"/createUrl", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ async function shortenUrl() {
 
 async function QrCreate(originalUrl) {
   try {
-    const response = await fetch("http://localhost:8080/v1/QrGen", {
+    const response = await fetch(prefix+"/QrGen", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

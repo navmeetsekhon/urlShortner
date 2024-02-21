@@ -23,7 +23,7 @@ public class QrService {
     QrCodeGenerator qrCodeGenerator;
     public ResponseEntity<byte[]> generateQr(QrRequest req) {
         String data = req.getUrl();
-        String filePath = "src/main/resources/static/QrCodes/qrCode.png";
+        String filePath = "server/src/main/resources/static/QrCodes/qrCode.png";
         String fileType = "png";
         int qrCodeSize = 300;
         try {
